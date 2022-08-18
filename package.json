@@ -1,6 +1,6 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
+  "name": "reactjs-portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@iconify/react": "^3.2.2",
     "next": "12.2.5",
+    "npm": "^8.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

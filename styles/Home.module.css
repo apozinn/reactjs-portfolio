@@ -1,24 +1,30 @@
-.container {
-  padding: 0 2rem;
-}
-
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding-top: 5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.loading {
+  transform: translate(0, -50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  width: min-content;
 }
 
 .footer {
   display: flex;
   flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  padding: 2rem 5px;
+  border-top: 1px solid #222;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .footer a {
@@ -26,104 +32,398 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  gap: 5px;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.footerCredits {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+.footerCredits a {
+  color: rgb(81, 135, 252);
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-.title,
-.description {
+.row > div {
   text-align: center;
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
+.progressText {
   display: flex;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.animateCharcter {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 5.5rem;
+  padding-top: 5rem;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  padding: 1rem;
+}
+
+.floatingNav {
+  background: rgb(0, 0, 0, 0.9);
+}
+
+.liLinks {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#linksNavBar {
+  position: absolute;
+  visibility: hidden;
+}
+
+.liLinks a {
+  display: flex;
+}
+
+.navBarMenu {
+  cursor: pointer;
+}
+
+.liLinks a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.gitCloneButtons {
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(90deg, #fff 50%, #000 0) var(--_p, 100%) / 200%
+    no-repeat;
+}
+
+#gitCloneButton {
+  transition: 0.4s;
+}
+
+#gitCloneButton:hover {
+  --_p: 0%;
+  color: black;
+}
+
+.mobileMenu {
+  position: absolute;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  top: 5rem;
+  width: 100vw;
+  padding: 1rem;
+  visibility: hidden;
+}
+
+#linksMobileMenu {
+  justify-content: space-between;
+}
+
+.showmemore {
+  --width: 100%;
+  --time: 1s;
+  border: none;
+  display: flex;
+  gap: 10px;
+  color: black;
+  padding: 3px 10px 3px 3px;
+  border-radius: 50px;
+  align-items: center;
+  position: relative;
+  color: white;
+  background: #222;
+  overflow: hidden;
+}
+
+.showmemore div {
+  position: relative;
+  display: flex;
+  background: black;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.showmemore svg {
+  color: #fff;
+}
+
+@keyframes shake {
+  25% {
+    transform: rotate(calc(var(--angle) * -1));
+  }
+
+  50% {
+    transform: rotate(var(--angle));
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.showmemore text {
+  position: relative;
+  z-index: 5;
+  transition: color var(--time);
+}
+
+.showmemore:hover text {
+  color: #222;
+}
+
+.showmemore span {
+  position: absolute;
+  left: 0;
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 100%;
+  background: #fff;
+  transition: width var(--time), padding-top var(--time);
+}
+
+.showmemore:hover span {
+  width: calc(var(--width) * 2.25);
+  padding-top: calc(var(--width) * 2.25);
+}
+
+.showmemore:hover div {
+  background: black;
+}
+
+.animated {
+  --angle: 5deg;
+  animation: shake 1s;
+}
+
+.aboutmeContainer {
+  display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #222;
+  border-radius: 5px;
   margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.aboutMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.projectsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.aboutmeAvatar {
+  --border-width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-width);
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.userLanguages {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid #222;
+  border-radius: 5px;
+  min-height: 10rem;
+  padding: 10px;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+.language {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.aboutmeAvatar img {
+  border-radius: 50%;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #222;
+  border-radius: 5px;
+  min-width: 17rem;
+  min-height: 28rem;
+  max-width: 17rem;
+}
+
+.project:hover {
+  margin: 1px;
+  box-shadow: 1px 1px 1px 1px #222;
+  border: 1px solid #fff;
+}
+
+.project img {
+  border-radius: 5px 5px 0 0;
+}
+
+.project > div {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  height: 70%;
+}
+
+.pjButtons {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.pjName {
+  font-family: "Poppins";
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pjDescription {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.pjButton {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+#pjVisit {
+  background: blue;
+  border: none;
+}
+
+#pjCode {
+  background: transparent;
+  border: 1px solid #222;
+}
+
+.pjAbout {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.pjAbout p {
+  font-size: 12px;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
+.aboutmeAvatar::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  width: 102%;
+  height: 102%;
+  background: linear-gradient(
+    60deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: calc(2 * var(--border-width));
+  animation: moveGradient 4s alternate infinite;
+}
+
+@media (min-width: 641px) {
+  .container {
+    padding: 0 2rem;
   }
-  .code {
-    background: #111;
+
+  .animateCharcter {
+    font-size: 6rem;
+    padding-top: 0;
   }
-  .logo img {
-    filter: invert(1);
+
+  .navBar {
+    padding: 2rem 0;
+    left: 2rem;
+    right: 2rem;
+  }
+
+  #linksNavBar {
+    position: initial;
+    visibility: visible;
+  }
+
+  .navBarMenu {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .aboutMain {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1281px) {
+  .animateCharcter {
+    font-size: 8rem;
   }
 }
